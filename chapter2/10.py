@@ -1,4 +1,4 @@
-path = 'data/hightemp.txt'
+path = '../data/hightemp.txt'
 '''
 withブロックを使うとブロック終了時に自動でclose()される。
 
