@@ -12,10 +12,13 @@ def article_UK():
                 return obj['text']
     raise ValueError('イギリスの記事が見つからない')
 
-r = re.compile(r'=+(.+)=+')
+'''
+(.+?) 非貪欲でマッチさせ、後ろの'='を含まないようにする
+'''
+r = re.compile(r'(=+)(.+?)(=+)')
 doc = article_UK().split('\n')
 
 for line in doc:
     match = r.match(line)
     if match:
-        print(match.group(1))
+        print('セクション：{section}, レベル:{level}'.format(section=match.group(2).strip(' '), level=len(match.group(1))-1))
